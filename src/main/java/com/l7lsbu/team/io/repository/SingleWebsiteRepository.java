@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SingleWebsiteRepository extends CrudRepository<SingleWebsiteEntity, Long> {
-    
+    SingleWebsiteEntity findByWebsite(String website);
 }

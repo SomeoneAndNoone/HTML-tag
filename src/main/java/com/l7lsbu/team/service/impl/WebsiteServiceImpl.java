@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.l7lsbu.team.exceptions.CustomException;
 import com.l7lsbu.team.io.entity.SingleWebsiteEntity;
-import com.l7lsbu.team.io.repository.SingleTagRepository;
 import com.l7lsbu.team.io.repository.SingleWebsiteRepository;
 import com.l7lsbu.team.service.intrfc.WebsiteService;
 import com.l7lsbu.team.shared.dto.WebsiteDto;
@@ -34,24 +33,24 @@ public class WebsiteServiceImpl implements WebsiteService {
 
     @Override
     public WebsiteDto createWebsite(WebsiteDto websiteDto) {
-        if(singleWebsiteRepository.findByUrl(websiteDto.getWebsiteUrl()) != null){
+        if(singleWebsiteRepository.findByWebsite(websiteDto.getWebsite()) != null){
             throw new CustomException("Url already exists");
         }
 
-        SingleUrlEntity singleUrlEntity =  new SingleUrlEntity();
-        BeanUtils.copyProperties(urlDto, singleUrlEntity);
+        SingleWebsiteEntity singleWebsiteEntity =  new SingleWebsiteEntity();
+        BeanUtils.copyProperties(websiteDto, singleWebsiteEntity);
 
-        SingleUrlEntity storedEntity = singleUrlRepository.save(singleUrlEntity);
-        UrlDto returnValue = new UrlDto();
+        SingleWebsiteEntity storedEntity = singleWebsiteRepository.save(singleWebsiteEntity);
+        WebsiteDto returnValue = new WebsiteDto();
         BeanUtils.copyProperties(storedEntity, returnValue);
 
         return returnValue;
     }
 
     @Override
-    public WebsiteDto deleteWebsite(String webisteUrl) {
-        // // TODO Auto-generated method stub
-        // return null;
+    public void deleteWebsite(String webiste) {
+        SingleWebsiteEntity websiteEntity = singleWebsiteRepository.findByWebsite(webiste);
+        singleWebsiteRepository.delete(websiteEntity);
     }
     
 }

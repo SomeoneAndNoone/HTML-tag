@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.l7lsbu.team.exceptions.CustomException;
 import com.l7lsbu.team.io.entity.SingleUrlEntity;
-import com.l7lsbu.team.repository.SingleUrlRepository;
+import com.l7lsbu.team.io.repository.SingleUrlRepository;
 import com.l7lsbu.team.service.intrfc.UrlService;
 import com.l7lsbu.team.shared.dto.UrlDto;
 

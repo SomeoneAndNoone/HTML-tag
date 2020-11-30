@@ -11,5 +11,5 @@ public interface WebsiteService {
 
     WebsiteDto createWebsite(WebsiteDto websiteDto);
 
-    WebsiteDto deleteWebsite(String webisteUrl);
+    void deleteWebsite(String webiste);
 }

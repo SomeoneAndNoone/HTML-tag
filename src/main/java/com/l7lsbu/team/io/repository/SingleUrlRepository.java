@@ -1,4 +1,4 @@
-package com.l7lsbu.team.repository;
+package com.l7lsbu.team.io.repository;
 
 import java.util.List;
 
