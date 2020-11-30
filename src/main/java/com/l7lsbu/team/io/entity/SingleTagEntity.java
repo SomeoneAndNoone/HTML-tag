@@ -3,9 +3,11 @@ package com.l7lsbu.team.io.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity(name = "tags")
 public class SingleTagEntity implements Serializable {
     
     private static final long serialVersionUID = -7453233320333976206L;
@@ -15,16 +17,16 @@ public class SingleTagEntity implements Serializable {
     private long tagId;
 
     @Column(nullable = false)
-    private long timeStamp;
+    private long timeStamp = 232;
 
 	@Column(nullable = false)
-    private String tag;
+    private String tag = "";
 
     @Column(nullable = false)
-    private String parentTag;
+    private String parentTag = "";
 
     @Column(nullable = false)
-    private String parentUrl;
+    private String parentUrl = "";
 
 
     public long getTagId() {

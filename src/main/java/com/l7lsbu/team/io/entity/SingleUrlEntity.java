@@ -17,13 +17,13 @@ public class SingleUrlEntity implements Serializable {
     private long urlId;
 
     @Column(nullable = false)
-    private long timeStamp;
+    private long timeStamp = 23123;
 
     @Column(nullable = false)
-    private String url;
+    private String url = "";
 
     @Column(nullable = false)
-    private String parentWebsite;
+    private String parentWebsite = "";
 
 
     public long getUrlId() {

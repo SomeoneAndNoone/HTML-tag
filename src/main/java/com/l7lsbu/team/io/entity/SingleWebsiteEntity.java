@@ -17,10 +17,10 @@ public class SingleWebsiteEntity implements Serializable {
     private long websiteId;
     
     @Column(nullable = false)
-    private long timeStamp;
+    private long timeStamp = 12123;
 
     @Column(nullable = false)
-    private String websiteUrl;
+    private String website = "";
 
 
     public long getWebsiteId() {
@@ -39,12 +39,12 @@ public class SingleWebsiteEntity implements Serializable {
         this.timeStamp = timeStamp;
     }
 
-    public String getWebsiteUrl() {
-        return this.websiteUrl;
+    public String getWebsite() {
+        return this.website;
     }
 
-    public void setWebsiteUrl(String websiteUrl) {
-        this.websiteUrl = websiteUrl;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
 }
