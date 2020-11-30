@@ -7,9 +7,9 @@ public class TagDto {
 
     private String tag;
 
-    private String parentTag;
-
     private String parentUrl;
+
+    private String parentWebsite;
 
 
     public long getTagId() {
@@ -36,13 +36,14 @@ public class TagDto {
         this.tag = tag;
     }
 
-    public String getParentTag() {
-        return this.parentTag;
+    public String getParentWebsite() {
+        return this.parentWebsite;
     }
 
-    public void setParentTag(String parentTag) {
-        this.parentTag = parentTag;
+    public void setParentWebsite(String parentWebsite) {
+        this.parentWebsite = parentWebsite;
     }
+
 
     public String getParentUrl() {
         return this.parentUrl;

@@ -20,9 +20,9 @@ public class TagServiceImpl implements TagService {
     SingleTagRepository singleTagRepository;
 
     @Override
-    public List<TagDto> getTags(String parentUrl) {
+    public List<TagDto> getTags() {
         List<TagDto> returnValue = new ArrayList<>();
-        List<SingleTagEntity> tags = singleTagRepository.findAllByParentUrl(parentUrl);
+        Iterable<SingleTagEntity> tags = singleTagRepository.findAll();
         for (SingleTagEntity singleTagEntity : tags) {
             TagDto tagDto = new TagDto();
             BeanUtils.copyProperties(singleTagEntity, tagDto);

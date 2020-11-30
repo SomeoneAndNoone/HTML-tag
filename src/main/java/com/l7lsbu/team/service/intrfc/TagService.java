@@ -6,7 +6,7 @@ import com.l7lsbu.team.shared.dto.TagDto;
 
 public interface TagService {
     
-    List<TagDto> getTags(String parentUrl);
+    List<TagDto> getTags();
 
     TagDto createTag(TagDto tagDto);
 

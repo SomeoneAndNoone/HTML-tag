@@ -18,15 +18,19 @@ public interface SingleTagRepository extends CrudRepository<SingleTagEntity, Lon
 
     SingleTagEntity findByTag(String tag);
 
-    @Query(value = "delete * from Tags t where t.parent_url = :parentUrl", nativeQuery = true)
-    void deleteTagsByUrl(@Param("parentUrl") String parentUrl);
+    @Transactional
+    @Modifying
+    @Query(value = "delete from tags t where t.parent_url = :mParentUrl", nativeQuery = true)
+    void deleteTagsByUrl(@Param("mParentUrl") String mParentUrl);
 
-    @Query(value = "delete * from Tags t where t.parent_website = :parentWebsite", nativeQuery = true)
-    void deleteTagsByWebsite(@Param("parentWebsite") String parentWebsite);
+    @Transactional
+    @Modifying
+    @Query(value = "delete from tags t where t.parent_website = :mParentWebsite", nativeQuery = true)
+    void deleteTagsByWebsite(@Param("mParentWebsite") String mParentWebsite);
 
     @Transactional
 	@Modifying
 	@Query(value="update tags t set t.tag=:mTag where t.tag_id=:tagId", nativeQuery=true)
-	void updateTag(@Param("tag") String mTag, 
+	void updateTag(@Param("mTag") String mTag, 
 			@Param("tagId") long tagId);
 }

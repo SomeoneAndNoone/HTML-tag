@@ -29,6 +29,9 @@ public class SingleTagEntity implements Serializable {
     @Column(nullable = false)
     private String parentWebsite = "";
 
+
+
+    
     public String getParentWebsite() {
         return this.parentWebsite;
     }

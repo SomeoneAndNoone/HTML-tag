@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.l7lsbu.team.service.intrfc.TagService;
 import com.l7lsbu.team.shared.dto.TagDto;
+import com.l7lsbu.team.ui.model.request.DeleteTagRequest;
 import com.l7lsbu.team.ui.model.request.TagRequestModel;
 import com.l7lsbu.team.ui.model.response.OperationStatusModel;
 import com.l7lsbu.team.ui.model.response.RequestOperationStatus;
@@ -30,11 +31,11 @@ public class TagController {
     @Autowired
     TagService tagService;
 
-    @GetMapping(path = "/{parentUrl}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<SingleTagRest> getTagsByUrl(@PathVariable String parentUrl){
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<SingleTagRest> getTagsByUrl(){
         List<SingleTagRest> returnValue = new ArrayList<>();
 
-        List<TagDto> tags = tagService.getTags(parentUrl);
+        List<TagDto> tags = tagService.getTags();
         
         Type lisType = new TypeToken<List<SingleTagRest>>() {}.getType();
 
@@ -56,35 +57,35 @@ public class TagController {
 		return returnValue;
     }
 
-    @DeleteMapping(path = "/byTag/{tag}", produces = {MediaType.APPLICATION_JSON_VALUE })
-    public OperationStatusModel deleteTag(@PathVariable String tag) {
+    @DeleteMapping(path = "/byTag", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE })
+    public OperationStatusModel deleteTag(@RequestBody DeleteTagRequest request) {
 
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
         
-        tagService.deleteTag(tag);
+        tagService.deleteTag(request.getRequestStr());
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         return returnValue;
     }
 
-    @DeleteMapping(path = "/byParentUrl/{parentUrl}", produces = {MediaType.APPLICATION_JSON_VALUE })
-    public OperationStatusModel deleteTagByParentUrl(@PathVariable String parentUrl) {
+    @DeleteMapping(path = "/byParentUrl", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE })
+    public OperationStatusModel deleteTagByParentUrl(@RequestBody DeleteTagRequest request) {
 
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
         
-        tagService.deleteTagsByUrl(parentUrl);
+        tagService.deleteTagsByUrl(request.getRequestStr());
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         return returnValue;
     }
 
-    @DeleteMapping(path = "/byParentWebsite/{parentWebsite}", produces = {MediaType.APPLICATION_JSON_VALUE })
-    public OperationStatusModel deleteTagByParentWebsite(@PathVariable String parentWebsite) {
+    @DeleteMapping(path = "/byParentWebsite", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE })
+    public OperationStatusModel deleteTagByParentWebsite(@RequestBody DeleteTagRequest request) {
 
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
         
-        tagService.deleteTagsByWebiste(parentWebsite);
+        tagService.deleteTagsByWebiste(request.getRequestStr());
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         return returnValue;
     }
