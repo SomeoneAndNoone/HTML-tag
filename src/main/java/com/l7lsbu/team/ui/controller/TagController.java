@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("tags") // http://localhost:8080/tags
+@RequestMapping("tags") // http://localhost:8080/tags/
 public class TagController {
     
     @Autowired
@@ -56,13 +56,35 @@ public class TagController {
 		return returnValue;
     }
 
-    @DeleteMapping(path = "/{tag}", produces = {MediaType.APPLICATION_JSON_VALUE })
+    @DeleteMapping(path = "/byTag/{tag}", produces = {MediaType.APPLICATION_JSON_VALUE })
     public OperationStatusModel deleteTag(@PathVariable String tag) {
 
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
         
         tagService.deleteTag(tag);
+        returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        return returnValue;
+    }
+
+    @DeleteMapping(path = "/byParentUrl/{parentUrl}", produces = {MediaType.APPLICATION_JSON_VALUE })
+    public OperationStatusModel deleteTagByParentUrl(@PathVariable String parentUrl) {
+
+        OperationStatusModel returnValue = new OperationStatusModel();
+        returnValue.setOperationName(RequestOperationName.DELETE.name());
+        
+        tagService.deleteTagsByUrl(parentUrl);
+        returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        return returnValue;
+    }
+
+    @DeleteMapping(path = "/byParentWebsite/{parentWebsite}", produces = {MediaType.APPLICATION_JSON_VALUE })
+    public OperationStatusModel deleteTagByParentWebsite(@PathVariable String parentWebsite) {
+
+        OperationStatusModel returnValue = new OperationStatusModel();
+        returnValue.setOperationName(RequestOperationName.DELETE.name());
+        
+        tagService.deleteTagsByWebiste(parentWebsite);
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         return returnValue;
     }
