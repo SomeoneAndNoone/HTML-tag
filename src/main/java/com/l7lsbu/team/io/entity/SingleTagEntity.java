@@ -22,12 +22,20 @@ public class SingleTagEntity implements Serializable {
 	@Column(nullable = false)
     private String tag = "";
 
-    @Column(nullable = false)
-    private String parentTag = "";
 
     @Column(nullable = false)
     private String parentUrl = "";
 
+    @Column(nullable = false)
+    private String parentWebsite = "";
+
+    public String getParentWebsite() {
+        return this.parentWebsite;
+    }
+
+    public void setParentWebsite(String parentWebsite) {
+        this.parentWebsite = parentWebsite;
+    }
 
     public long getTagId() {
         return this.tagId;
@@ -51,14 +59,6 @@ public class SingleTagEntity implements Serializable {
 
     public void setTag(String tag) {
         this.tag = tag;
-    }
-
-    public String getParentTag() {
-        return this.parentTag;
-    }
-
-    public void setParentTag(String parentTag) {
-        this.parentTag = parentTag;
     }
 
     public String getParentUrl() {

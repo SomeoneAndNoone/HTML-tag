@@ -12,6 +12,10 @@ public interface TagService {
 
     void deleteTag(String tag);
 
-    void deleteTags(String parentUrl);
+    void deleteTagsByUrl(String parentUrl);
+
+    void deleteTagsByWebiste(String parentWebsite);
+
+    void updateTag(TagDto tagDto);
 }
 

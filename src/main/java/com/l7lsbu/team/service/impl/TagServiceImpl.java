@@ -55,11 +55,17 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void deleteTags(String parentUrl) {
-        List<SingleTagEntity> dTags = singleTagRepository.findAllByParentUrl(parentUrl);
-        for (SingleTagEntity tag : dTags) {
-            singleTagRepository.delete(tag);
-        }
+    public void deleteTagsByUrl(String parentUrl) {
+        singleTagRepository.deleteTagsByUrl(parentUrl);
     }
-    
+
+    @Override
+    public void deleteTagsByWebiste(String parentWebsite) {
+        singleTagRepository.deleteTagsByWebsite(parentWebsite);
+    }
+
+    @Override
+    public void updateTag(TagDto tagDto) {
+        singleTagRepository.updateTag(tagDto.getTag(), tagDto.getTagId());
+    }
 }
